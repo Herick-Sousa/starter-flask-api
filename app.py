@@ -5,8 +5,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
+    try:
+        with open("test.txt", "w") as file:
+            file.write("TESTE")
 
-    with open("test.txt", "w") as file:
-        file.write("TESTE")
+        return 'Hello, world!'
+        
+    except Exception as err: return str(err)
     
-    return 'Hello, world!'
+    
